@@ -32,6 +32,11 @@
     <script>
         // Handle clicks on div 1
         // Print out innerHTML of the actual div that fired it and the div 1 innerHTML
+        var parent = document.getElementById('parent');
+        parent.addEventListener('click', function (event) {
+           console.log('Div which is the current element / handler is registered on: ' + event.currentTarget.innerHTML);
+           console.log('Div which fired the event has an innerHTML: ' + event.target.innerHTML );
+        });
     </script>
 </body>
 </html>
