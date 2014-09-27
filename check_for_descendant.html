@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            padding: 1em;
+            border: 1px solid gray;
+            margin: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="dd">
+        <div id="asdf">
+            <div id="cc">
+
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // find if the element with an id cc is a child of the element dd
+        var event = new CustomEvent('cust1234', { detail: 'check for parent' , bubbles: true });
+
+
+        var dd = document.getElementById('dd');
+
+        var cc = document.getElementById('cc');
+
+
+        var atParent = false;
+
+        dd.addEventListener('cust1234', function () {
+            atParent = true;
+        }, true);
+
+        cc.addEventListener('cust1234', function () {
+            if (atParent) console.log('yes! is an ancestor');
+            else console.log('no! not an ancestor');
+        }, true);
+
+
+        cc.dispatchEvent(event);
+    </script>
+</body>
+</html>
