@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>indexOf children</title>
+    <link rel="stylesheet" href="base.css"/>
+    <style>
+        span {
+            display: inline-block;
+            padding: 1em;
+            margin: 1em;
+            height: 200px;
+            width: 200px;
+            background-color: #2a3a48;
+        }
+    </style>
+</head>
+<body>
+    Select the s
+    <div>
+        <span>Some data</span>
+        <span>Some data</span>
+        <span>Some data</span>
+        <span>Some data</span>
+    </div>
+    <script>
+
+        for (var i = 0, len = 100; i < len; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 0);
+        }
+
+        for (var j = 0; j < len; j++) {
+            setTimeout((function (index) {
+                console.log(index);
+            }).bind(null, j), 0);
+        }
+
+
+
+        document.body.children[0].addEventListener('click', function (event) {
+             if (event.target.tagName === 'SPAN') {
+
+                 var index = Array.prototype.indexOf.call(this.children, event.target);
+                 console.log(index);
+                 if ( index - 1 > -1 ) this.children[index - 1].style.backgroundColor = 'red';
+             }
+        });
+    </script>
+
+</body>
+</html>

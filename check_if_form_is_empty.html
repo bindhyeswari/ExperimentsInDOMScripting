@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Check if a form is empty</title>
+    <link rel="stylesheet" href="base.css"/>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $();
+    </script>
+</head>
+<body>
+<form id="form1">
+
+    <input type="text"/>
+    <input type="text"/>
+    <input type="tel"/>
+    <input type="email"/>
+    <input type="checkbox" id="cb1" value=""/><label for="cb1">Am I false?</label>
+    <input type="submit"/>
+
+</form>
+<script>
+    $('#form1').submit(function (event) {
+        event.preventDefault();
+        var str = '';
+        // todo: handle checkboxes and radio boxes
+        var val = isFormEmpty(this) ? 'Form is empty!' : 'Form is not empty!';
+        console.log( val );
+    });
+
+    function isFormEmpty (form) {
+        var isEmpty = true;
+        $(form).children(':input').each(function () {
+            if ( $(this).val().length > 0 ) isEmpty = false;
+        });
+        return isEmpty;
+    }
+</script>
+</body>
+</html>
