@@ -1,0 +1,7 @@
+// todo: Download JSON file from restcountries.eu
+// allow user to upload the json file
+// extract capitals of the countries
+// provide a download link with the new JSON information
+
+// input type file
+// Filereader MDN

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="base.css"/>
+    <title></title>
+    <style>
+        div.menu {
+            position: fixed;
+            padding: 1em;
+            background-color: #eee;
+            border: 1px solid #aaa;
+            display: none;
+        }
+        div.item {
+            border-bottom: 1px solid #ccc;
+            padding: 0.5em;
+        }
+        div.item:last-child {
+            border-bottom: none;
+        }
+
+        div.item:hover {
+            color: blue;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+<div class="menu">
+    <div class="item">New file</div>
+    <div class="item">New folder</div>
+    <div class="item"> ---- </div>
+</div>
+
+
+
+<script>
+    var menu = document.getElementsByClassName('menu')[0];
+
+    // show menu
+    window.addEventListener('contextmenu', function (evt) {
+        evt.preventDefault();
+        menu.style.left = evt.clientX + 'px';
+        menu.style.top = evt.clientY + 'px';
+        menu.style.display = 'block';
+    });
+
+    
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

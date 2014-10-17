@@ -17,6 +17,7 @@
 
         </div>
     </div>
+    <button id="btn">Fire Event 3F2504E0-4F89-41D3-9A0C-0305E82C3301</button>
     <script>
 
         // https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent
@@ -26,13 +27,48 @@
         var div5 = document.getElementById('div5');
 
 
+        // div3.dispatchEvent(event);
+
+        document.getElementById('btn').addEventListener('click', function () {
+            div3.dispatchEvent(event);
+        });
+
+
+
+
+
         // is div 3 a descendant of div1
         // is div 5 a descendant of div1
 
         // isChild --> all HTML elements
-        HTMLElement.prototype.isDescendantOf = function (parent) {
+        HTMLElement.prototype.fireIfDescendant = function (parent, callback) {
             // return true or false
+
+            var child = this;
+
+            var isParentOf = false;
+            var event = new CustomEvent('3F2504E0-4F89-41D3-9A0C-0305E82C3301', {bubbles: true});
+            parent.addEventListener('3F2504E0-4F89-41D3-9A0C-0305E82C3301', function () {
+                isParentOf = true
+            }, true);
+            child.addEventListener('3F2504E0-4F89-41D3-9A0C-0305E82C3301', function () {
+                console.log(isParentOf);
+                callback(isParentOf);
+            });
+            child.dispatchEvent(event);
         };
+
+        // Promises
+
+        function x(bool) {
+            if (bool) {
+                console.log('Is a parent');
+            } else {
+                console.log('Not a parent');
+            }
+        }
+
+        div3.fireIfDescendant(div1, x);
 
     </script>
 </body>
