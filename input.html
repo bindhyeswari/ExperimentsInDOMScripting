@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="input character" content="Disallow non alphanumeric characters within an input element."/>
+    <link rel="stylesheet" href="base.css"/>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var input_element = document.body.firstElementChild;
+
+
+            input_element.addEventListener('keypress', function (event) {
+                console.log(String.fromCharCode(event.charCode));
+                if (/[<>;&^//]/gmi.test(String.fromCharCode(event.charCode)))
+                    event.preventDefault();
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text"/>
+</body>
+</html>
